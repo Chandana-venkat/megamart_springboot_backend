@@ -1,7 +1,4 @@
 package com.codegnan.app.javawebapp13082026.megamart.resource;
-
-
-
 import com.codegnan.app.javawebapp13082026.megamart.entity.Admin;
 import com.codegnan.app.javawebapp13082026.megamart.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;

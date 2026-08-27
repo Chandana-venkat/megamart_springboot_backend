@@ -25,6 +25,10 @@ public class OrderItem {
     @Column(name = "product_name")
     private String productName;
 
+    // PRODUCT IMAGE
+    @Column(name = "image", length = 1000)
+    private String image;
+
     @NotNull(message = "Quantity is required")
     @Positive(message = "Quantity must be greater than zero")
     private Integer quantity;

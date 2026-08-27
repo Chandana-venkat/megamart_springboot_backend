@@ -1,7 +1,5 @@
 package com.codegnan.app.javawebapp13082026.megamart.service;
 
-
-
 import com.codegnan.app.javawebapp13082026.megamart.entity.Wishlist;
 import com.codegnan.app.javawebapp13082026.megamart.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
