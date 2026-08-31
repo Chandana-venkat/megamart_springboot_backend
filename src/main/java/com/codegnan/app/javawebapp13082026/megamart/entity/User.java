@@ -5,11 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-
     @Id
-
-
-
     @Column(length = 50)
     private String id;
 
@@ -35,6 +31,7 @@ public class User {
     }
 
     public String getId() {
+
         return id;
     }
 

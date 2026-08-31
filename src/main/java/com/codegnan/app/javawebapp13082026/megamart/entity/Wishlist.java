@@ -1,7 +1,4 @@
 package com.codegnan.app.javawebapp13082026.megamart.entity;
-
-
-
 import jakarta.persistence.*;
         import lombok.Data;
 

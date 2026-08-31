@@ -1,7 +1,4 @@
 package com.codegnan.app.javawebapp13082026.megamart.repository;
-
-
-
 import com.codegnan.app.javawebapp13082026.megamart.entity.Wishlist;
 import org.springframework.data.jpa.repository.JpaRepository;
 

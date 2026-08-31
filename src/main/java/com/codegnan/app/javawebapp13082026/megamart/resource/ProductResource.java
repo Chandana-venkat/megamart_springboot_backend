@@ -10,7 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
-@CrossOrigin(origins = "http://localhost:5173")
+//@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://megamart-frontend-git-main-chandana-venkats-projects.vercel.app"
+})
 public class ProductResource {
 
     @Autowired

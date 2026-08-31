@@ -1,7 +1,5 @@
 package com.codegnan.app.javawebapp13082026.megamart.repository;
 
-
-
 import com.codegnan.app.javawebapp13082026.megamart.entity.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 
