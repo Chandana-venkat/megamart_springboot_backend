@@ -13,7 +13,7 @@ import java.util.List;
 //@CrossOrigin(origins = "http://localhost:5173")
 @CrossOrigin(origins = {
         "http://localhost:5173",
-        "https://megamart-frontend-git-main-chandana-venkats-projects.vercel.app"
+        "https://megamart-frontend-gbhduscuo-chandana-venkats-projects.vercel.app"
 })
 public class ProductResource {
 
