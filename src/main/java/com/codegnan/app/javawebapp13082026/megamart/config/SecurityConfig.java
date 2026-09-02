@@ -84,7 +84,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(
                 Arrays.asList(
                         "http://localhost:5173",
-                        "https://megamart-frontend-ke07j92zu-chandana-venkats-projects.vercel.app"
+                        "https://megamart-frontend-six.vercel.app"
                 )
         );
 
