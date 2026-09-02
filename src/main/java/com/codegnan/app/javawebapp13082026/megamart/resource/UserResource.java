@@ -9,9 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://megamart-frontend-six.vercel.app"
+})
 public class UserResource {
-
     @Autowired
     private UserService userService;
 
