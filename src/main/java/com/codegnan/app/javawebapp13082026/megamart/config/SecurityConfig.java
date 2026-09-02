@@ -1,4 +1,5 @@
-package com.codegnan.app.javawebapp13082026.megamart.config;
+
+        package com.codegnan.app.javawebapp13082026.megamart.config;
 
 import com.codegnan.app.javawebapp13082026.megamart.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
@@ -50,10 +51,11 @@ public class SecurityConfig {
                         )
                         .permitAll()
 
+                        // Products are public for testing
                         .requestMatchers(
                                 "/products/**"
                         )
-                        .authenticated()
+                        .permitAll()
 
                         .requestMatchers(
                                 "/cart/**",
@@ -117,3 +119,4 @@ public class SecurityConfig {
         return source;
     }
 }
+
