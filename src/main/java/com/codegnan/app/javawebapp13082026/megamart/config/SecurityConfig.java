@@ -204,7 +204,8 @@ public class SecurityConfig {
                 Arrays.asList(
                         "http://localhost:5173",
                         "https://megamart-frontend-six.vercel.app",
-                        "https://megamart-frontend-git-main-chandana-venkats-projects.vercel.app"
+                        "https://megamart-frontend-git-main-chandana-venkats-projects.vercel.app",
+                        "https://megamart-frontend-4v0k4pzoj-chandana-venkats-projects.vercel.app"
                 )
         );
 
