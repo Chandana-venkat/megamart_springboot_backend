@@ -24,18 +24,14 @@ import java.util.Arrays;
 @Configuration
 public class SecurityConfig {
 
-    // =========================
-    // PASSWORD ENCODER
-    // =========================
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
-    // =========================
-    // SECURITY FILTER CHAIN
-    // =========================
+
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http,
@@ -60,9 +56,7 @@ public class SecurityConfig {
                         )
                 )
 
-                // =========================
-                // AUTHORIZATION
-                // =========================
+
                 .authorizeHttpRequests(auth -> auth
 
                         // Allow CORS preflight requests
@@ -79,8 +73,12 @@ public class SecurityConfig {
 
 
                         // User registration/access
+//                        .requestMatchers(
+//                                "/users"
+//                        ).permitAll()
                         .requestMatchers(
-                                "/users"
+                                "/users",
+                                "/users/reset-password"
                         ).permitAll()
 
 
@@ -117,9 +115,7 @@ public class SecurityConfig {
     }
 
 
-    // =========================
-    // CORS CONFIGURATION
-    // =========================
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
 
@@ -127,9 +123,7 @@ public class SecurityConfig {
                 new CorsConfiguration();
 
 
-        // =========================
-        // ALLOWED FRONTENDS
-        // =========================
+
         configuration.setAllowedOriginPatterns(
                 Arrays.asList(
                         "http://localhost:5173",
@@ -138,9 +132,7 @@ public class SecurityConfig {
         );
 
 
-        // =========================
-        // ALLOWED HTTP METHODS
-        // =========================
+
         configuration.setAllowedMethods(
                 Arrays.asList(
                         "GET",
@@ -153,17 +145,13 @@ public class SecurityConfig {
         );
 
 
-        // =========================
-        // ALLOWED HEADERS
-        // =========================
+
         configuration.setAllowedHeaders(
                 Arrays.asList("*")
         );
 
 
-        // =========================
-        // EXPOSED HEADERS
-        // =========================
+
         configuration.setExposedHeaders(
                 Arrays.asList(
                         "Authorization"
@@ -171,15 +159,11 @@ public class SecurityConfig {
         );
 
 
-        // =========================
-        // CREDENTIALS
-        // =========================
+
         configuration.setAllowCredentials(true);
 
 
-        // =========================
-        // REGISTER CORS CONFIG
-        // =========================
+      
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
 
