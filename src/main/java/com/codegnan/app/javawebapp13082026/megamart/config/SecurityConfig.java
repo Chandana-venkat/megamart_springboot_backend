@@ -8,10 +8,8 @@ import org.springframework.http.HttpMethod;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -24,13 +22,10 @@ import java.util.Arrays;
 @Configuration
 public class SecurityConfig {
 
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(
@@ -46,7 +41,7 @@ public class SecurityConfig {
                         )
                 )
 
-                // Disable CSRF because we are using JWT
+                // Disable CSRF because JWT is used
                 .csrf(csrf -> csrf.disable())
 
                 // Stateless session
@@ -56,54 +51,44 @@ public class SecurityConfig {
                         )
                 )
 
-
+                // Authorization
                 .authorizeHttpRequests(auth -> auth
 
-                        // Allow CORS preflight requests
+                        // IMPORTANT: Allow browser CORS preflight
                         .requestMatchers(
                                 HttpMethod.OPTIONS,
                                 "/**"
                         ).permitAll()
 
-
-                        // Authentication APIs
+                        // Authentication
                         .requestMatchers(
                                 "/auth/**"
                         ).permitAll()
 
-
-                        // User registration/access
-//                        .requestMatchers(
-//                                "/users"
-//                        ).permitAll()
+                        // Users
                         .requestMatchers(
                                 "/users",
                                 "/users/reset-password"
                         ).permitAll()
 
-
-                        // Product APIs are public
+                        // Products
                         .requestMatchers(
                                 "/products/**"
                         ).permitAll()
 
-
-                        // Cart APIs
+                        // Cart
                         .requestMatchers(
                                 "/cart/**"
                         ).permitAll()
 
-
-                        // Wishlist APIs
+                        // Wishlist
                         .requestMatchers(
                                 "/wishlist/**"
                         ).permitAll()
 
-
-                        // Everything else requires authentication
+                        // Other APIs
                         .anyRequest().authenticated()
                 )
-
 
                 // JWT filter
                 .addFilterBefore(
@@ -114,25 +99,22 @@ public class SecurityConfig {
         return http.build();
     }
 
-
-
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
 
         CorsConfiguration configuration =
                 new CorsConfiguration();
 
-
-
+        // Frontend URLs
         configuration.setAllowedOriginPatterns(
                 Arrays.asList(
                         "http://localhost:5173",
+                        "https://megamart-frontend-six.vercel.app",
                         "https://*.vercel.app"
                 )
         );
 
-
-
+        // HTTP methods
         configuration.setAllowedMethods(
                 Arrays.asList(
                         "GET",
@@ -144,26 +126,21 @@ public class SecurityConfig {
                 )
         );
 
-
-
+        // Request headers
         configuration.setAllowedHeaders(
                 Arrays.asList("*")
         );
 
-
-
+        // Response headers
         configuration.setExposedHeaders(
                 Arrays.asList(
                         "Authorization"
                 )
         );
 
-
-
+        // Allow credentials
         configuration.setAllowCredentials(true);
 
-
-      
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
 
